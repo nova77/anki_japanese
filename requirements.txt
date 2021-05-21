@@ -1,0 +1,7 @@
+# note this is required
+#   pip install --upgrade "pip>=19.3"
+# then
+#   pip install -r requirements.txt
+
+absl-py
+anki
