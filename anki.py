@@ -5,16 +5,6 @@ import genanki
 from typing import Iterator
 from cards_io import CardsTuples
 
-# CARD_STYLE = """
-# .card {
-#   font-family: arial;
-#   font-size: 30px;
-#   text-align: center;
-#   color: black;
-#   background-color: white;
-# }
-# """
-
 CARD_STYLE = """
 .front {
   background-color: white;
