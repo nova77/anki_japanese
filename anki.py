@@ -1,8 +1,11 @@
 """All the anki related stuff."""
 
+import hashlib
+import itertools
+from absl import logging
 import genanki
 
-from typing import Iterator
+from typing import Iterator, Optional
 from cards_io import CardsTuples
 
 CARD_STYLE = """
@@ -46,7 +49,11 @@ BACK_TEMPLATE = """
 </div>
 """
 
-DECK_ID = 8899424244
+
+def hash_cards(cards: CardsTuples) -> int:
+  values = list(itertools.chain.from_iterable(cards))
+  values_str = ','.join(values).encode("utf-8")
+  return int(hashlib.sha1(values_str).hexdigest(), 16) % (2 ** 61)
 
 
 def get_notes(model: genanki.Model, cards: CardsTuples) -> Iterator[genanki.Note]:
@@ -54,7 +61,11 @@ def get_notes(model: genanki.Model, cards: CardsTuples) -> Iterator[genanki.Note
     yield genanki.Note(model, fields=fields)
 
 
-def get_deck(deck_id: int, name: str, model: genanki.Model, cards: CardsTuples) -> genanki.Deck:
+def get_deck(name: str, model: genanki.Model, cards: CardsTuples, deck_id: Optional[int] = None) -> genanki.Deck:
+  if deck_id is None:
+    deck_id = hash_cards(cards)
+    logging.info(f'"{name}" hashed as {deck_id}')
+
   deck = genanki.Deck(deck_id, name)
   for note in get_notes(model, cards):
     deck.add_note(note)

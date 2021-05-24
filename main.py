@@ -25,9 +25,7 @@ def main(argv):
   model = anki.get_model(model_id.value, model_name.value)
 
   for name, cards in cards.items():
-    deck_id = hash(name)
-    deck = anki.get_deck(deck_id, name, model, cards)
-
+    deck = anki.get_deck(name, model, cards)
     output_fname = os.path.join(output_dir.value, f'{name}.apkg')
     anki.write_deck(deck, output_fname)
     logging.info(f'Wrote {output_fname}')
