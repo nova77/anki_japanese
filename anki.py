@@ -44,7 +44,7 @@ BACK_TEMPLATE = """
 <hr id="answer">
 <div class=back>
 <div class=text>
-{{Japanese}}<br/>({{Romanji}})
+{{Japanese}}<br/>{{Other}}
 </div>
 </div>
 """
@@ -56,12 +56,18 @@ def hash_cards(cards: CardsTuples) -> int:
   return int(hashlib.sha1(values_str).hexdigest(), 16) % (2 ** 61)
 
 
-def get_notes(model: genanki.Model, cards: CardsTuples) -> Iterator[genanki.Note]:
-  for fields in cards:
-    yield genanki.Note(model, fields=fields)
+def get_notes(model: genanki.Model,
+              cards: CardsTuples) -> Iterator[genanki.Note]:
+  for en, ja, *other in cards:
+    # other is optional
+    other = f'({other[0]})' if other else ''
+    yield genanki.Note(model, fields=[en, ja, other])
 
 
-def get_deck(name: str, model: genanki.Model, cards: CardsTuples, deck_id: Optional[int] = None) -> genanki.Deck:
+def get_deck(name: str,
+             model: genanki.Model,
+             cards: CardsTuples,
+             deck_id: Optional[int] = None) -> genanki.Deck:
   if deck_id is None:
     deck_id = hash_cards(cards)
     logging.info(f'"{name}" hashed as {deck_id}')
@@ -74,16 +80,16 @@ def get_deck(name: str, model: genanki.Model, cards: CardsTuples, deck_id: Optio
 
 def get_model(model_id: int, name: str):
   fields = [
-      {'name': 'English'},
-      {'name': 'Japanese'},
-      {'name': 'Romanji'},
+    {'name': 'English'},
+    {'name': 'Japanese'},
+    {'name': 'Other'},
   ]
   templates = [
-      {
-          'name': 'en/ja',
-          'qfmt': FRONT_TEMPLATE,
-          'afmt': BACK_TEMPLATE
-      }
+    {
+      'name': 'en/ja',
+      'qfmt': FRONT_TEMPLATE,
+      'afmt': BACK_TEMPLATE
+    }
   ]
 
   return genanki.Model(model_id, name, fields=fields,
