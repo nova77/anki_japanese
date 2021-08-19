@@ -97,4 +97,4 @@ def get_model(model_id: int, name: str):
 
 
 def write_deck(deck: genanki.Deck, path: str):
-  genanki.Package(deck).write_to_file(path)  # 'theogony_vocab.apkg'
+  genanki.Package(deck).write_to_file(path)

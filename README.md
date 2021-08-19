@@ -1,6 +1,15 @@
 ### What is this?
 
-A simple tool to create Anki cards from csv files to help me learn japanese.
+A simple tool to create [Anki cards](https://apps.ankiweb.net/) from csv
+files to help me learn japanese.
+
+### Installation
+
+You wanna run the code inside a
+[venv](https://docs.python.org/3/library/venv.html).
+
+    pip install --upgrade "pip>=19.3"
+    pip install -r requirements.txt
 
 ### Usage examples
 
@@ -13,6 +22,8 @@ python main.py
 # corresponding flag:
 python main.py --cards_dir /my/csv/files --output_dir  /tmp/mycards
 ```
+
+Once created you can import the cards in your favourite anki viewer.
 
 ### CSV format
 

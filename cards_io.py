@@ -15,6 +15,7 @@ def load_card(fname: str) -> CardsTuples:
     return list(reader)
 
 def load_cards(dir: str) -> Dict[str, CardsTuples]:
+  """Returns a dictionary of each entry per card."""
   res = {}
   for fname in glob.glob(f'{dir}/*.csv'):
     card = load_card(fname)

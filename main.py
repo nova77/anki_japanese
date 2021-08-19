@@ -26,6 +26,7 @@ def main(argv):
 
   for name, cards in cards.items():
     deck = anki.get_deck(name, model, cards)
+    os.makedirs(output_dir.value, exist_ok=True)
     output_fname = os.path.join(output_dir.value, f'{name}.apkg')
     anki.write_deck(deck, output_fname)
     logging.info(f'Wrote {output_fname}')
