@@ -27,7 +27,7 @@ Once created you can import the cards in your favourite anki viewer.
 
 ### CSV format
 
-The csv is formatted as
+The csv is formatted - with **no header** - as
 
     <front>,<back (primary)>,<back (secondary)>
 
