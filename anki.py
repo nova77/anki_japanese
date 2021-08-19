@@ -60,7 +60,7 @@ def get_notes(model: genanki.Model,
               cards: CardsTuples) -> Iterator[genanki.Note]:
   for en, ja, *other in cards:
     # other is optional
-    other = f'({other[0]})' if other else ''
+    other = f'({other[0]})' if (other and other[0]) else ''
     yield genanki.Note(model, fields=[en, ja, other])
 
 
