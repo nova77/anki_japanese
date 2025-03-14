@@ -1,19 +1,19 @@
-hidari,left,
-mannaka,center,
-migi,right,
-magarimasu,turn,
-massugu,straight,massugu itte kudasai -> please go straight
-kado,corner
-kōsaten,cross road
-shingō,traffic light
-tsugi,next
-[x] no temae [ni/de],before [x],"ni: time, de: position	e.g. kado no temae de -> just before the corner"
-[x] no mae [ni/de],in front of [x]
-[x] no saki [ni/de],after [x]
-"[ni] norimasu (de particle for place, ni for method of transport)",get on,densha ni norimasu -> get on the train
-"[o] orimasu (de particle for place, o for method of transport)",get off,"for some things you can use the particle [kara] instead of [o], eg. Uma (horse)"
-[o] demasu / dete,"go out, leave",tokyo eki o dete (leave from tokyo station)
-[ni] tsukimasu,arrive,
-[de] tomete,stop,
-kakarimasu,take (time),30-pun kakarimasu -> takes 30 minuts
-dōyatte,how / in what way,dōyatte ikimasuka -> how do you get there
+left,hidari,
+center,mannaka,
+right,migi,
+turn,magarimasu,
+straight,massugu,massugu itte kudasai -> please go straight
+corner,kado,
+cross road,kōsaten,
+traffic light,shingō,
+next,tsugi,
+before [x],[x] no temae [ni/de],"ni: time, de: position	e.g. kado no temae de -> just before the corner"
+in front of [x],[x] no mae [ni/de],
+after [x],[x] no saki [ni/de],
+get on,"[ni] norimasu (de particle for place, ni for method of transport)",densha ni norimasu -> get on the train
+get off,"[o] orimasu (de particle for place, o for method of transport)","for some things you can use the particle [kara] instead of [o], eg. Uma (horse)"
+"go out, leave",[o] demasu / dete,tokyo eki o dete (leave from tokyo station)
+arrive,[ni] tsukimasu,
+stop,[de] tomete,
+take (time),kakarimasu,30-pun kakarimasu -> takes 30 minuts
+how / in what way,dōyatte,dōyatte ikimasuka -> how do you get there
